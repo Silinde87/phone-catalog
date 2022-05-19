@@ -7,6 +7,7 @@ function Home() {
   };
   return (
     <div>
+      <div>React App Template</div>
       <button onClick={handleClick}>Get phones</button>
     </div>
   );
