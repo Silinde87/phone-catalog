@@ -1,20 +1,41 @@
 import { defaultHeaders, buildPath } from './helpers';
 
 const httpServices = () => {
-  const options = {
+  const configServices = {
     headers: defaultHeaders,
   };
 
   /**
-   * @name get
+   * @name GET
    * @description make a GET request
    * @param {Object} options - options to make the GET resquest.
+   * @param {string} options.path - the path for the GET request.
    */
-  const get = (options) => {
+  const GET = (options) => {
     const path = buildPath(options);
     return fetch(path, {
       method: 'GET',
-      ...options,
+      ...configServices,
+    })
+      .then((res) => res.json())
+      .catch((error) => {
+        throw error;
+      });
+  };
+
+  /**
+   * @name POST
+   * @description make a POST request
+   * @param {Object} options - options to make the POST resquest.
+   * @param {string} options.path - the path for the POST request.
+   * @param {Object} options.data - Object with body values.
+   */
+  const POST = (options) => {
+    const path = buildPath(options);
+    return fetch(path, {
+      method: 'POST',
+      body: JSON.stringify(options.data),
+      ...configServices,
     })
       .then((res) => res.json())
       .catch((error) => {
@@ -23,7 +44,8 @@ const httpServices = () => {
   };
 
   return {
-    get,
+    GET,
+    POST,
   };
 };
 

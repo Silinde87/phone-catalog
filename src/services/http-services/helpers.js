@@ -1,6 +1,8 @@
 const apiUrl = 'https://phone-catalog-dcsl.herokuapp.com/api';
 
-const defaultHeaders = {};
+const defaultHeaders = {
+  'Content-Type': 'application/json',
+};
 
 /**
  * @name buildPath
