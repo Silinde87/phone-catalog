@@ -4,4 +4,5 @@ export const ROUTES = {
 
 export const API = {
   PHONES: '/phones',
+  UPDATE_PHONE: (phoneId) => `/phones/${phoneId}`,
 };

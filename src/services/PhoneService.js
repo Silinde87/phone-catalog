@@ -19,7 +19,16 @@ const PhoneService = () => {
         throw error;
       });
   };
-  return { getAllPhones, createPhone };
+
+  const updatePhone = (phoneId, data) => {
+    return http
+      .PUT({ path: API.UPDATE_PHONE(phoneId), data })
+      .then((response) => response)
+      .catch((error) => {
+        throw error;
+      });
+  };
+  return { getAllPhones, createPhone, updatePhone };
 };
 
 export default PhoneService();
