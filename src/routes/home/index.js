@@ -1,5 +1,15 @@
+import PhoneService from './../../services/PhoneService';
 function Home() {
-  return <div>React App Template</div>;
+  const handleClick = () => {
+    PhoneService.getAllPhones()
+      .then((res) => console.log(res))
+      .catch((error) => console.log(error));
+  };
+  return (
+    <div>
+      <button onClick={handleClick}>Get phones</button>
+    </div>
+  );
 }
 
 export default Home;
