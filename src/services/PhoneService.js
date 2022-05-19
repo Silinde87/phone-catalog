@@ -2,9 +2,9 @@ import { API } from '../globals/constants';
 import http from './http-services/http';
 
 const PhoneService = () => {
-  const getAllPhones = (options) => {
+  const getAllPhones = () => {
     return http
-      .GET({ path: API.PHONES, ...options })
+      .GET({ path: API.PHONES })
       .then((response) => response)
       .catch((error) => {
         throw error;
@@ -28,7 +28,17 @@ const PhoneService = () => {
         throw error;
       });
   };
-  return { getAllPhones, createPhone, updatePhone };
+
+  const deletePhone = (phoneId) => {
+    return http
+      .DELETE({ path: API.DELETE_PHONE(phoneId) })
+      .then((response) => response)
+      .catch((error) => {
+        throw error;
+      });
+  };
+
+  return { getAllPhones, createPhone, updatePhone, deletePhone };
 };
 
 export default PhoneService();

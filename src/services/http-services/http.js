@@ -63,10 +63,29 @@ const httpServices = () => {
       });
   };
 
+  /**
+   * @name DELETE
+   * @description make a DELETE request
+   * @param {Object} options - options to make the DELETE resquest.
+   * @param {string} options.path - the path for the DELETE request.
+   */
+  const DELETE = (options) => {
+    const path = buildPath(options);
+    return fetch(path, {
+      method: 'DELETE',
+      ...configServices,
+    })
+      .then((res) => res.json())
+      .catch((error) => {
+        throw error;
+      });
+  };
+
   return {
     GET,
     POST,
     PUT,
+    DELETE,
   };
 };
 
