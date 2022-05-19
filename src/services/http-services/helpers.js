@@ -1,7 +1,9 @@
 const apiUrl = 'https://phone-catalog-dcsl.herokuapp.com/api';
 
 const defaultHeaders = {
-  'Content-Type': 'application/json',
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',
+  'Access-Control-Allow-Headers': 'Content-Type',
 };
 
 /**
