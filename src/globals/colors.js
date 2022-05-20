@@ -5,4 +5,11 @@ export const Colors = {
   gray700: '#D3D3D3',
   gray600: '#EAEAEA',
   gray200: '#FFFFFF',
+
+  green600: '#CCD5AE',
+  green500: '#E9EDC9',
+  green200: '#FEFAE0',
+
+  brown600: '#D4A373',
+  brown500: '#FAEDCD',
 };

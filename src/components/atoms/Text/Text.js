@@ -3,7 +3,7 @@ import { SCText } from './Text.styled';
 import { Colors } from './../../../globals/colors';
 import { TextAlignements, TextStyles, TextTypes } from './Text.types';
 
-function Text({
+const Text = ({
   color = Colors.gray900,
   as = TextTypes.P,
   textAlign = TextAlignements.CENTER,
@@ -11,7 +11,7 @@ function Text({
   fontStyle = TextStyles.NORMAL,
   children,
   ...otherProps
-}) {
+}) => {
   return (
     <SCText
       as={as}
@@ -24,7 +24,7 @@ function Text({
       {children}
     </SCText>
   );
-}
+};
 
 Text.propTypes = {
   color: string,
