@@ -3,6 +3,7 @@ import { defaultHeaders, buildPath } from './helpers';
 const httpServices = () => {
   const configServices = {
     headers: defaultHeaders,
+    credentials: 'include',
   };
 
   /**
