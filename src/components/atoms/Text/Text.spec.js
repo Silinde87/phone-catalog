@@ -1,6 +1,7 @@
 import { Colors } from '../../../globals/colors';
 import { renderComponent } from '../../../utils/testUtils';
 import Text from './Text';
+import { TextAlignements, TextTypes } from './Text.types';
 
 describe('Text Component', () => {
   test('should render a text passed as children', () => {
@@ -26,7 +27,7 @@ describe('Text Component', () => {
 
   test('should render a h1 element with different color if passed as prop', () => {
     const { queryByTestId } = renderComponent(
-      <Text data-testid="text-component" as="h1" color={Colors.gray600}>
+      <Text data-testid="text-component" as={TextTypes.H1} color={Colors.gray600}>
         text
       </Text>
     );
@@ -40,7 +41,7 @@ describe('Text Component', () => {
 
   test('should render a h3 uppercased if passed as prop', () => {
     const { queryByTestId } = renderComponent(
-      <Text data-testid="text-component" as="h3" uppercase>
+      <Text data-testid="text-component" as={TextTypes.H3} uppercase>
         text
       </Text>
     );
@@ -54,7 +55,7 @@ describe('Text Component', () => {
 
   test('should render a h2 aligned to left if passed as prop', () => {
     const { queryByTestId } = renderComponent(
-      <Text data-testid="text-component" as="h2" textAlign="left">
+      <Text data-testid="text-component" as={TextTypes.H2} textAlign={TextAlignements.LEFT}>
         text
       </Text>
     );

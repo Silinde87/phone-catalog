@@ -1,13 +1,14 @@
-import PropTypes from 'prop-types';
+import { string, bool, node } from 'prop-types';
 import { SCText } from './Text.styled';
 import { Colors } from './../../../globals/colors';
+import { TextAlignements, TextStyles, TextTypes } from './Text.types';
 
 function Text({
   color = Colors.gray900,
-  as = 'p',
-  textAlign = 'center',
+  as = TextTypes.P,
+  textAlign = TextAlignements.CENTER,
   uppercase = false,
-  fontStyle = 'normal',
+  fontStyle = TextStyles.NORMAL,
   children,
   ...otherProps
 }) {
@@ -26,12 +27,12 @@ function Text({
 }
 
 Text.propTypes = {
-  color: PropTypes.string,
-  as: PropTypes.string,
-  textAlign: PropTypes.string,
-  uppercase: PropTypes.bool,
-  fontStyle: PropTypes.string,
-  children: PropTypes.node.isRequired,
+  color: string,
+  as: string,
+  textAlign: string,
+  uppercase: bool,
+  fontStyle: string,
+  children: node.isRequired,
 };
 
 export default Text;
