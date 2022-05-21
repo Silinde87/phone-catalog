@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useReactContext } from '../../../context/Context';
 import Home from '../component/Home';
 
-function HomePage() {
+function HomePage({ ...otherProps }) {
   const [filteredPhones, setFilteredPhones] = useState([]);
   const [isContentLoaded, setIsContentLoaded] = useState(false);
 
@@ -33,6 +33,7 @@ function HomePage() {
       handleClick={handleClick}
       filteredPhones={filteredPhones}
       isContentLoaded={isContentLoaded}
+      {...otherProps}
     />
   );
 }

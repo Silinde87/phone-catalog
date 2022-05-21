@@ -13,7 +13,7 @@ const HomeWrapper = styled.div`
 `;
 
 const PhonesWrapper = styled(InfiniteScroll)`
-  margin-top: 40px;
+  padding-top: 40px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;

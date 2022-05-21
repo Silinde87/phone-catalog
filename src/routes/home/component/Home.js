@@ -4,7 +4,7 @@ import { TextTypes } from '../../../components/atoms/Text';
 import { PhoneCard, InputSearch, Spinner } from './../../../components/atoms';
 import { HomeText, HomeWrapper, PhonesWrapper, SpinnerWrapper } from './Home.styled';
 
-function Home({ handleChange, handleClick, filteredPhones, isContentLoaded }) {
+function Home({ handleChange, handleClick, filteredPhones, isContentLoaded, ...otherProps }) {
   const maxPhonesToShow = 30;
   const [phonesToShow, setPhonesToShow] = useState([]);
   const [hasMore, setHasMore] = useState(true);
@@ -27,7 +27,7 @@ function Home({ handleChange, handleClick, filteredPhones, isContentLoaded }) {
   };
 
   return (
-    <HomeWrapper>
+    <HomeWrapper {...otherProps}>
       <HomeText as={TextTypes.H1}>The Phone Catalog</HomeText>
       {isContentLoaded ? (
         <>

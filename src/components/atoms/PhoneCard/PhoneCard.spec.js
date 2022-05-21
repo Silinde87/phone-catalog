@@ -13,8 +13,8 @@ describe('PhoneCard Component', () => {
     expect(phoneCard).toBeInTheDocument();
 
     expect(phoneCard).toHaveStyle(`
-      width: 180px;
-      height: 238px;
+      width: 225px;
+      height: 280px;
       border-radius: 8px;
       border: 1px solid ${Colors.gray600};
       box-shadow: 0px 4px 8px 0px ${Colors.gray600};
@@ -29,7 +29,6 @@ describe('PhoneCard Component', () => {
     const imageElement = phoneCard.querySelector('img');
     const textElement = phoneCard.querySelector('p');
 
-    expect(phoneCard.children.length).toBe(2);
     expect(imageElement).toBeInTheDocument();
     expect(textElement).toBeInTheDocument();
   });
