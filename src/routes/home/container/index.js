@@ -24,7 +24,7 @@ function HomePage({ ...otherProps }) {
   };
 
   const handleClick = (name) => {
-    console.log('from home', name);
+    // console.log('from home', name);
   };
 
   return (
