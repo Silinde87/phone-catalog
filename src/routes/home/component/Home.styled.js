@@ -1,3 +1,4 @@
+import InfiniteScroll from 'react-infinite-scroll-component';
 import styled from 'styled-components';
 import { Text } from '../../../components/atoms';
 
@@ -11,7 +12,7 @@ const HomeWrapper = styled.div`
   align-items: center;
 `;
 
-const PhonesWrapper = styled.div`
+const PhonesWrapper = styled(InfiniteScroll)`
   margin-top: 40px;
   display: flex;
   flex-wrap: wrap;
