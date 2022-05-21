@@ -7,7 +7,7 @@ import {
   PhoneSpecSecondaryText,
 } from './PhoneSpec.styled';
 
-const PhoneSpec = ({ src = '', mainText = '', secondaryText, ...otherProps }) => {
+const PhoneSpec = ({ src = '', alt = '', mainText = '', secondaryText, ...otherProps }) => {
   return (
     <PhoneSpecWrapper {...otherProps}>
       <PhoneSpecIcon src={src} />
@@ -23,6 +23,7 @@ const PhoneSpec = ({ src = '', mainText = '', secondaryText, ...otherProps }) =>
 
 PhoneSpec.propTypes = {
   src: string,
+  alt: string,
   mainText: string,
   secondaryText: string,
 };

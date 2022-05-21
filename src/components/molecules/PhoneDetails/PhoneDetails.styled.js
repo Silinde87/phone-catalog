@@ -3,25 +3,16 @@ import { breakPoints } from '../../../globals/breakpoints';
 import { Colors } from '../../../globals/colors';
 import { Text } from '../../atoms';
 
-const PhoneDetailsContainer = styled.div`
-  padding: 40px 24px 24px 24px;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  @media (min-width: ${breakPoints.xs}px) and (max-width: ${breakPoints.sm}px) {
-    padding: 40px 16px 24px 16px;
-  }
-`;
-
 const PhoneDetailsCard = styled.div`
   width: fit-content;
   border: 1px solid ${Colors.brown600};
   border-radius: 8px;
-  margin-top: 24px;
+  box-shadow: 0px 4px 8px 0px ${Colors.gray600};
+  margin: auto;
+
+  @media (min-width: ${breakPoints.xs}px) and (max-width: ${breakPoints.sm}px) {
+    width: 100%;
+  }
 `;
 
 const PhoneDetailsTitleWrapper = styled.div`
@@ -74,7 +65,6 @@ const PhoneDetailsImage = styled.img`
 `;
 
 export {
-  PhoneDetailsContainer,
   PhoneDetailsCard,
   PhoneDetailsTitleWrapper,
   PhoneDetailsWrapper,
