@@ -25,7 +25,11 @@ const PhoneCardWrapper = styled.button`
   }
 
   @media (min-width: ${breakPoints.xs}px) and (max-width: ${breakPoints.sm}px) {
-    width: 180px;
+    width: 175px;
+    &:hover,
+    &:focus-visible {
+      transform: none;
+    }
   }
 `;
 

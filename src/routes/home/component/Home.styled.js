@@ -1,6 +1,7 @@
 import InfiniteScroll from 'react-infinite-scroll-component';
 import styled from 'styled-components';
 import { Text } from '../../../components/atoms';
+import { breakPoints } from '../../../globals/breakpoints';
 
 const HomeWrapper = styled.div`
   padding: 40px 24px 24px 24px;
@@ -10,6 +11,10 @@ const HomeWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  @media (min-width: ${breakPoints.xs}px) and (max-width: ${breakPoints.sm}px) {
+    padding: 40px 16px 24px 16px;
+  }
 `;
 
 const PhonesWrapper = styled(InfiniteScroll)`
@@ -19,6 +24,9 @@ const PhonesWrapper = styled(InfiniteScroll)`
   justify-content: center;
   gap: 32px;
   max-width: 1440px;
+  @media (min-width: ${breakPoints.xs}px) and (max-width: ${breakPoints.sm}px) {
+    gap: 24px;
+  }
 `;
 
 const SpinnerWrapper = styled.div`
@@ -27,8 +35,12 @@ const SpinnerWrapper = styled.div`
   justify-content: center;
 `;
 
-const HomeText = styled(Text)`
+const HomeTitle = styled(Text)`
   margin-bottom: 24px;
 `;
 
-export { HomeWrapper, PhonesWrapper, SpinnerWrapper, HomeText };
+const NoMorePhonesText = styled(Text)`
+  margin-top: 24px;
+`;
+
+export { HomeWrapper, PhonesWrapper, SpinnerWrapper, HomeTitle, NoMorePhonesText };
