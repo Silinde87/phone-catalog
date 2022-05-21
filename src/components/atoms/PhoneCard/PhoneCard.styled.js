@@ -1,9 +1,11 @@
 import styled from 'styled-components';
+import { breakPoints } from '../../../globals/breakpoints';
 import { Colors } from '../../../globals/colors';
+import Text from '../Text';
 
 const PhoneCardWrapper = styled.button`
-  width: 180px;
-  height: 238px;
+  width: 225px;
+  height: 280px;
   padding: 8px;
   border-radius: 8px;
   border: 1px solid ${Colors.gray600};
@@ -20,6 +22,10 @@ const PhoneCardWrapper = styled.button`
     transform: scale(1.1);
     outline: none;
   }
+
+  @media (min-width: ${breakPoints.xs}px) and (max-width: ${breakPoints.sm}px) {
+    width: 180px;
+  }
 `;
 
 const PhoneCardImage = styled.img`
@@ -29,4 +35,11 @@ const PhoneCardImage = styled.img`
   margin-bottom: 16px;
 `;
 
-export { PhoneCardWrapper, PhoneCardImage };
+const PhoneCardText = styled(Text)`
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+`;
+
+export { PhoneCardWrapper, PhoneCardImage, PhoneCardText };

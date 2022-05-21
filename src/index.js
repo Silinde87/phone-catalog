@@ -5,6 +5,7 @@ import App from './routes';
 import GlobalStyles from './GlobalStyles';
 import ContextStore from './context/ContextStore';
 import { ContextConsumer } from './context/Context';
+import './fonts.css';
 
 const root = createRoot(document.getElementById('root'));
 

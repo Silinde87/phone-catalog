@@ -1,6 +1,5 @@
 import { string, func } from 'prop-types';
-import { PhoneCardImage, PhoneCardWrapper } from './PhoneCard.styled';
-import Text from '../Text';
+import { PhoneCardImage, PhoneCardText, PhoneCardWrapper } from './PhoneCard.styled';
 
 const PhoneCard = ({ src = '', name = '', onClick = () => {}, ...otherProps }) => {
   const handleClick = () => {
@@ -10,7 +9,7 @@ const PhoneCard = ({ src = '', name = '', onClick = () => {}, ...otherProps }) =
   return (
     <PhoneCardWrapper onClick={handleClick} value={name} {...otherProps}>
       <PhoneCardImage src={src} alt={name}></PhoneCardImage>
-      <Text>{name}</Text>
+      <PhoneCardText>{name}</PhoneCardText>
     </PhoneCardWrapper>
   );
 };
