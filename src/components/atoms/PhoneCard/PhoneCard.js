@@ -17,8 +17,14 @@ const PhoneCard = ({ src = '', name = '', onClick = () => {}, ...otherProps }) =
 
   useEffect(() => {
     if (imageRef.current) {
-      imageRef.current?.addEventListener('load', onImageLoaded);
-      return () => imageRef.current?.removeEventListener('load', onImageLoaded);
+      if (document.readyState === 'complete') {
+        // Callback for Safari. addEventListener('load') doesn't works well
+        // https://github.com/vercel/next.js/discussions/13929
+        onImageLoaded();
+      } else {
+        imageRef.current?.addEventListener('load', onImageLoaded);
+        return () => imageRef.current?.removeEventListener('load', onImageLoaded);
+      }
     }
   }, [imageRef]);
 
