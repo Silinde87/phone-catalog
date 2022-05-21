@@ -15,7 +15,24 @@ const PhonePage = () => {
     }
   }, [phonesState.selectedPhone]);
 
-  return <Phone selectedPhone={phonesState.selectedPhone} />;
+  const handleBackClick = () => {
+    navigate(-1);
+  };
+  const handleEditClick = () => {
+    //console.log('edit');
+  };
+  const handleDeleteClick = () => {
+    //console.log('remove');
+  };
+
+  return (
+    <Phone
+      selectedPhone={phonesState.selectedPhone}
+      handleBackClick={handleBackClick}
+      handleEditClick={handleEditClick}
+      handleDeleteClick={handleDeleteClick}
+    />
+  );
 };
 
 export default PhonePage;
