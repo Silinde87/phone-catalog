@@ -47,17 +47,30 @@ const PhoneDetailsSpecWrapper = styled.div`
   grid-template-rows: repeat(2, 1fr);
   height: fit-content;
   width: fit-content;
+
+  @media (min-width: ${breakPoints.xs}px) and (max-width: ${breakPoints.sm}px) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    margin: auto;
+  }
 `;
 
 const PhoneDetailsWrapper = styled.div`
   display: flex;
   padding: 16px 24px 16px 24px;
+  @media (min-width: ${breakPoints.xs}px) and (max-width: ${breakPoints.sm}px) {
+    flex-direction: column;
+  }
 `;
 
 const PhoneDetailsImage = styled.img`
   object-fit: contain;
   max-height: 200px;
   margin-right: 24px;
+  @media (min-width: ${breakPoints.xs}px) and (max-width: ${breakPoints.sm}px) {
+    margin-right: 0px;
+    margin-bottom: 24px;
+  }
 `;
 
 export {
