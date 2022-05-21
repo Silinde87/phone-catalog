@@ -1,15 +1,40 @@
+import { useEffect, useState } from 'react';
+import { useReactContext } from '../../../context/Context';
 import Home from '../component/Home';
 
 function HomePage() {
+  const [filteredPhones, setFilteredPhones] = useState([]);
+  const [isContentLoaded, setIsContentLoaded] = useState(false);
+
+  const { phonesState } = useReactContext();
+
+  useEffect(() => {
+    if (phonesState.phones.length > 0) {
+      setIsContentLoaded(true);
+      setFilteredPhones(phonesState.phones);
+    }
+  }, [phonesState.phones]);
+
   const handleChange = (event) => {
-    console.log(event.target.value);
+    const value = event.target.value.toLowerCase();
+    const newFilteredPhones = phonesState.phones.filter((phone) =>
+      phone.name.toLowerCase().includes(value)
+    );
+    setFilteredPhones(newFilteredPhones);
   };
 
   const handleClick = (name) => {
     console.log('from home', name);
   };
 
-  return <Home handleChange={handleChange} handleClick={handleClick} />;
+  return (
+    <Home
+      handleChange={handleChange}
+      handleClick={handleClick}
+      filteredPhones={filteredPhones}
+      isContentLoaded={isContentLoaded}
+    />
+  );
 }
 
 export default HomePage;

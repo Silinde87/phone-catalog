@@ -1,19 +1,17 @@
-import { func } from 'prop-types';
+import { bool, func, array } from 'prop-types';
 import { TextTypes } from '../../../components/atoms/Text';
 import { PhoneCard, InputSearch, Spinner } from './../../../components/atoms';
-import { useReactContext } from './../../../context/Context';
 import { HomeText, HomeWrapper, PhonesWrapper, SpinnerWrapper } from './Home.styled';
 
-function Home({ handleChange, handleClick }) {
-  const { phonesState } = useReactContext();
+function Home({ handleChange, handleClick, filteredPhones, isContentLoaded }) {
   return (
     <HomeWrapper>
-      <HomeText as={TextTypes.H1}>The Phone catalog</HomeText>
-      {phonesState.phones.length > 0 ? (
+      <HomeText as={TextTypes.H1}>The Phone Catalog</HomeText>
+      {isContentLoaded ? (
         <>
           <InputSearch placeholder="Search your phone..." onChange={handleChange} />
           <PhonesWrapper>
-            {phonesState.phones.map((phone, index) => {
+            {filteredPhones.map((phone, index) => {
               return (
                 <PhoneCard
                   key={index}
@@ -37,6 +35,8 @@ function Home({ handleChange, handleClick }) {
 Home.propTypes = {
   handleChange: func,
   handleClick: func,
+  filteredPhones: array,
+  isContentLoaded: bool,
 };
 
 export default Home;
