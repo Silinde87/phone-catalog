@@ -1,8 +1,8 @@
 import { object } from 'prop-types';
-import React, { useEffect } from 'react';
+import { PhoneDetails } from '../../../components/molecules';
 
 function Phone({ selectedPhone }) {
-  return <div>Phone Details</div>;
+  return <PhoneDetails selectedPhone={selectedPhone} />;
 }
 
 Phone.propTypes = {
