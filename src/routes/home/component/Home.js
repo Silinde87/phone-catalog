@@ -53,6 +53,7 @@ function Home({ handleChange, handleClick, filteredPhones, isContentLoaded, ...o
                     key={index}
                     src={phone.imageFileName}
                     name={phone.name}
+                    id={phone.id}
                     onClick={handleClick}
                   />
                 );
