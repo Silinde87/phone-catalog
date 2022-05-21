@@ -2,10 +2,18 @@ import { createGlobalStyle } from 'styled-components';
 import { breakPoints } from './globals/breakpoints';
 
 const GlobalStyles = createGlobalStyle`
-    html, body {
+    * {
+        box-sizing: border-box;
+    }
+    html, body, #root {
         margin: 0;
         padding: 0;
-        box-sizing: border-box;
+        height: 100%;
+    }
+    html, body {
+        overflow-x: hidden;
+        position: relative;
+        max-width: 100%;
     }
 
     h1, h2, h3, h4, h5, h6, p, span {
@@ -13,7 +21,7 @@ const GlobalStyles = createGlobalStyle`
         padding: 0;
         border: 0;
 	    font-size: 100%;
-        font-family: OpenSans;
+        font-family: OpenSans, sans-serif;
         letter-spacing: 0em;
     }
     ol, ul {

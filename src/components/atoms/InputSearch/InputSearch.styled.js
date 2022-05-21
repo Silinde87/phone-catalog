@@ -10,6 +10,7 @@ const InputWrapper = styled.input`
   width: 500px;
   color: ${Colors.gray900};
   font-size: 18px;
+  font-family: OpenSans, sans-serif;
   transition: outline 0.1s;
   &::placeholder {
     color: ${Colors.gray800};
@@ -18,8 +19,8 @@ const InputWrapper = styled.input`
     outline: 2px solid ${Colors.green600};
   }
   @media (min-width: ${breakPoints.xs}px) and (max-width: ${breakPoints.sm}px) {
-    max-width: 300px;
-    font-size: 14px;
+    width: 100%;
+    font-size: 16px;
   }
 `;
 
