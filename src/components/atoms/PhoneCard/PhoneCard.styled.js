@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { breakPoints } from '../../../globals/breakpoints';
 import { Colors } from '../../../globals/colors';
+import Spinner from '../Spinner';
 import Text from '../Text';
 
 const PhoneCardWrapper = styled.button`
@@ -24,8 +25,16 @@ const PhoneCardWrapper = styled.button`
   }
 
   @media (min-width: ${breakPoints.xs}px) and (max-width: ${breakPoints.sm}px) {
-    width: 180px;
+    width: 175px;
+    &:hover,
+    &:focus-visible {
+      transform: none;
+    }
   }
+`;
+
+const PhoneCardSpinner = styled(Spinner)`
+  display: ${({ isImageLoaded }) => (!isImageLoaded ? 'block' : 'none')};
 `;
 
 const PhoneCardImage = styled.img`
@@ -33,6 +42,7 @@ const PhoneCardImage = styled.img`
   width: 139px;
   object-fit: cover;
   margin-bottom: 16px;
+  display: ${({ isImageLoaded }) => (isImageLoaded ? 'inline-block' : 'none')};
 `;
 
 const PhoneCardText = styled(Text)`
@@ -40,6 +50,7 @@ const PhoneCardText = styled(Text)`
   overflow: hidden;
   text-overflow: ellipsis;
   word-wrap: break-word;
+  display: ${({ isImageLoaded }) => (isImageLoaded ? 'inline-block' : 'none')};
 `;
 
-export { PhoneCardWrapper, PhoneCardImage, PhoneCardText };
+export { PhoneCardWrapper, PhoneCardImage, PhoneCardText, PhoneCardSpinner };

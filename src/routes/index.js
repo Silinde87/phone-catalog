@@ -1,11 +1,11 @@
 import { Route, Routes } from 'react-router-dom';
 import { ROUTES } from '../globals/constants';
-import Home from './home';
+import HomePage from './home/container';
 
 function App() {
   return (
     <Routes>
-      <Route exact path={ROUTES.HOME} element={<Home />} />
+      <Route exact path={ROUTES.HOME} element={<HomePage />} />
     </Routes>
   );
 }

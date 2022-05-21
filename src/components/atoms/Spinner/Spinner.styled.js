@@ -18,8 +18,8 @@ const spinner = keyframes`
 
 const SpinnerWrapper = styled.div`
   position: relative;
-  width: 22.4px;
-  height: 22.4px;
+  width: ${({ size }) => `${size}px`};
+  height: ${({ size }) => `${size}px`};
 
   &::before,
   &::after {
