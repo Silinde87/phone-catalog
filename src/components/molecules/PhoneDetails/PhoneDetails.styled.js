@@ -35,31 +35,13 @@ const PhoneDetailsTitleWrapper = styled.div`
   border-top-right-radius: 8px;
 `;
 
-const PhoneDetailsBox = styled.div`
-  height: 135px;
-  width: 135px;
-  padding: 8px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-`;
-
 const PhoneDetailsDescription = styled(Text)`
   font-size: 14px;
   margin-bottom: 16px;
   max-width: 400px;
 `;
 
-const BoxMainText = styled(Text)`
-  font-weight: 600;
-`;
-
-const BoxSecondaryText = styled(Text)`
-  font-size: 14px;
-`;
-
-const PhoneDetailsBoxWrapper = styled.div`
+const PhoneDetailsSpecWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
@@ -78,21 +60,12 @@ const PhoneDetailsImage = styled.img`
   margin-right: 24px;
 `;
 
-const PhoneDetailsIcon = styled.img`
-  height: 30px;
-  margin-bottom: 8px;
-`;
-
 export {
   PhoneDetailsContainer,
   PhoneDetailsCard,
   PhoneDetailsTitleWrapper,
-  PhoneDetailsBox,
   PhoneDetailsWrapper,
   PhoneDetailsImage,
-  PhoneDetailsBoxWrapper,
-  PhoneDetailsIcon,
-  BoxMainText,
-  BoxSecondaryText,
+  PhoneDetailsSpecWrapper,
   PhoneDetailsDescription,
 };

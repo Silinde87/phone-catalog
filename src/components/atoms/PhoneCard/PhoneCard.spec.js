@@ -7,7 +7,7 @@ import PhoneCard from './PhoneCard';
 describe('PhoneCard Component', () => {
   test('should be rendered with right style', () => {
     const { queryByTestId } = renderComponent(
-      <PhoneCard data-testid="phone-card" src="" name="" onClick={() => {}} />
+      <PhoneCard data-testid="phone-card" src="" name="" id="" onClick={() => {}} />
     );
     const phoneCard = queryByTestId('phone-card');
     expect(phoneCard).toBeInTheDocument();
@@ -23,7 +23,7 @@ describe('PhoneCard Component', () => {
 
   test('should have an image and a text as a children', () => {
     const { queryByTestId } = renderComponent(
-      <PhoneCard data-testid="phone-card" src="" name="" onClick={() => {}} />
+      <PhoneCard data-testid="phone-card" src="" name="" id="" onClick={() => {}} />
     );
     const phoneCard = queryByTestId('phone-card');
     const imageElement = phoneCard.querySelector('img');
@@ -35,7 +35,7 @@ describe('PhoneCard Component', () => {
 
   test('should render an image with right style', () => {
     const { queryByTestId } = renderComponent(
-      <PhoneCard data-testid="phone-card" src="" name="" onClick={() => {}} />
+      <PhoneCard data-testid="phone-card" src="" name="" id="" onClick={() => {}} />
     );
     const phoneCard = queryByTestId('phone-card');
     const imageElement = phoneCard.querySelector('img');
@@ -50,7 +50,7 @@ describe('PhoneCard Component', () => {
 
   test('should render a text with right style', () => {
     const { queryByTestId } = renderComponent(
-      <PhoneCard data-testid="phone-card" src="" name="text" onClick={() => {}} />
+      <PhoneCard data-testid="phone-card" src="" name="text" id="" onClick={() => {}} />
     );
     const phoneCard = queryByTestId('phone-card');
     const textElement = phoneCard.querySelector('p');
@@ -63,7 +63,7 @@ describe('PhoneCard Component', () => {
 
   test('should change scale on hover', () => {
     const { queryByTestId } = renderComponent(
-      <PhoneCard data-testid="phone-card" src="" name="text" onClick={() => {}} />
+      <PhoneCard data-testid="phone-card" src="" name="text" id="" onClick={() => {}} />
     );
     const phoneCard = queryByTestId('phone-card');
 
@@ -79,7 +79,7 @@ describe('PhoneCard Component', () => {
   test('should exec an onClick function', () => {
     const onClick = jest.fn();
     const { queryByTestId } = renderComponent(
-      <PhoneCard data-testid="phone-card" src="" name="text" onClick={onClick} />
+      <PhoneCard data-testid="phone-card" src="" name="text" id="" onClick={onClick} />
     );
     const phoneCard = queryByTestId('phone-card');
 

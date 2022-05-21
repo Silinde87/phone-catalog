@@ -4,7 +4,7 @@ import { useReactContext } from '../../../context/Context';
 import { ROUTES } from '../../../globals/constants';
 import Phone from '../component/Phone';
 
-function PhonePage() {
+const PhonePage = () => {
   const { phonesState } = useReactContext();
   const navigate = useNavigate();
 
@@ -16,6 +16,6 @@ function PhonePage() {
   }, [phonesState.selectedPhone]);
 
   return <Phone selectedPhone={phonesState.selectedPhone} />;
-}
+};
 
 export default PhonePage;
