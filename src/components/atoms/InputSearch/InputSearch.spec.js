@@ -1,7 +1,6 @@
 import InputSearch from './InputSearch';
 import { Colors } from '../../../globals/colors';
 import { renderComponent } from '../../../utils/testUtils';
-import userEvent from '@testing-library/user-event';
 import { fireEvent } from '@testing-library/react';
 
 describe('InputSearch Component', () => {

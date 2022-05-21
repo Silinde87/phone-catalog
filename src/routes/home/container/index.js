@@ -1,12 +1,15 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useReactContext } from '../../../context/Context';
+import { ROUTES } from '../../../globals/constants';
 import Home from '../component/Home';
 
 function HomePage({ ...otherProps }) {
   const [filteredPhones, setFilteredPhones] = useState([]);
   const [isContentLoaded, setIsContentLoaded] = useState(false);
 
-  const { phonesState } = useReactContext();
+  const { phonesState, setPhonesState } = useReactContext();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (phonesState.phones.length > 0) {
@@ -23,8 +26,13 @@ function HomePage({ ...otherProps }) {
     setFilteredPhones(newFilteredPhones);
   };
 
-  const handleClick = (name) => {
-    // console.log('from home', name);
+  const handleClick = (id) => {
+    const selectedPhone = phonesState.phones.find((phone) => phone.id === id);
+    setPhonesState((prevState) => ({
+      ...prevState,
+      selectedPhone,
+    }));
+    navigate(ROUTES.PHONE_WITH_ID(id));
   };
 
   return (

@@ -7,7 +7,7 @@ import {
   PhoneCardWrapper,
 } from './PhoneCard.styled';
 
-const PhoneCard = ({ src = '', name = '', onClick = () => {}, ...otherProps }) => {
+const PhoneCard = ({ src = '', name = '', id = '', onClick = () => {}, ...otherProps }) => {
   const [isImageLoaded, setIsImageLoaded] = useState(false);
   const imageRef = useRef(null);
 
@@ -29,7 +29,7 @@ const PhoneCard = ({ src = '', name = '', onClick = () => {}, ...otherProps }) =
   }, [imageRef]);
 
   const handleClick = () => {
-    onClick(name);
+    onClick(id);
   };
 
   return (
@@ -44,6 +44,7 @@ const PhoneCard = ({ src = '', name = '', onClick = () => {}, ...otherProps }) =
 PhoneCard.propTypes = {
   src: string.isRequired,
   name: string.isRequired,
+  id: string.isRequired,
   onClick: func.isRequired,
 };
 

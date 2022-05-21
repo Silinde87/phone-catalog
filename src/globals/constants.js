@@ -1,5 +1,7 @@
 export const ROUTES = {
   HOME: '/',
+  PHONE: '/phone/:id',
+  PHONE_WITH_ID: (phoneId) => `/phone/${phoneId}`,
 };
 
 export const API = {

@@ -32,7 +32,7 @@ Text.propTypes = {
   textAlign: string,
   uppercase: bool,
   fontStyle: string,
-  children: node.isRequired,
+  children: node,
 };
 
 export default Text;
