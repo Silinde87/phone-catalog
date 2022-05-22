@@ -13,7 +13,7 @@ describe('Button Component', () => {
     expect(buttonComponent).toHaveStyle(`
         width: 120px;
         height: 48px;
-        border: 1px solid ${Colors.green500};
+        border: 2px solid ${Colors.green500};
         background-color: ${Colors.green500};
         border-radius: 8px;
     `);
@@ -26,12 +26,8 @@ describe('Button Component', () => {
     const buttonComponent = queryByTestId('button-component');
 
     expect(buttonComponent).toHaveStyle(`
-        width: 120px;
-        height: 48px;
-        border: 1px solid ${Colors.green500};
+        border: 2px solid ${Colors.green500};
         background-color: ${Colors.gray200};
-        transition: all 0.2s;
-        border-radius: 8px;
     `);
   });
 

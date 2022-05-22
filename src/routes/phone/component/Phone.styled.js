@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Text } from '../../../components/atoms';
+import { Modal, Text } from '../../../components/atoms';
 import { breakPoints } from '../../../globals/breakpoints';
 
 const PhoneContainer = styled.div`
@@ -32,4 +32,21 @@ const ButtonIconsWrapper = styled.div`
   }
 `;
 
-export { PhoneContainer, PhoneTitle, ButtonIconsWrapper };
+const PhoneConfirmModal = styled(Modal)`
+  max-width: 400px;
+`;
+
+const PhoneConfirmModalButtonsWrapper = styled.div`
+  display: flex;
+  gap: 16px;
+  margin-top: 24px;
+  justify-content: center;
+`;
+
+export {
+  PhoneContainer,
+  PhoneTitle,
+  ButtonIconsWrapper,
+  PhoneConfirmModal,
+  PhoneConfirmModalButtonsWrapper,
+};

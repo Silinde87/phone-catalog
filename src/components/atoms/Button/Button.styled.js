@@ -22,15 +22,17 @@ const handleBorderColor = (variant, status) => {
 const ButtonWrapper = styled.button`
   width: 120px;
   height: 48px;
-  border: 1px solid ${({ variant }) => handleBorderColor(variant, 'normal')};
+  border: 2px solid ${({ variant }) => handleBorderColor(variant, 'normal')};
   background-color: ${({ variant }) => handleBackgroundColor(variant, 'normal')};
   transition: all 0.2s;
   border-radius: 8px;
+  outline: none;
 
   cursor: pointer;
-  &:hover {
+  &:hover,
+  &:focus {
     background-color: ${({ variant }) => handleBackgroundColor(variant, 'hover')};
-    border: 1px solid ${({ variant }) => handleBorderColor(variant, 'hover')};
+    border: 3px solid ${({ variant }) => handleBorderColor(variant, 'hover')};
   }
 `;
 
