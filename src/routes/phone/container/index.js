@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { createRef, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useReactContext } from '../../../context/Context';
 import { ROUTES } from '../../../globals/constants';
@@ -9,6 +9,7 @@ const PhonePage = () => {
   const { phonesState, setPhonesState } = useReactContext();
   const { selectedPhone, phones } = phonesState;
   const navigate = useNavigate();
+  const modalRef = createRef();
 
   useEffect(() => {
     // Redirect to home if detail page is not accessed through home
@@ -24,19 +25,28 @@ const PhonePage = () => {
     //console.log('edit');
   };
   const handleDeleteClick = () => {
-    PhoneService.deletePhone(selectedPhone.id)
-      .then(() => {
-        const newPhones = phones.filter((phone) => phone.id !== selectedPhone.id);
-        setPhonesState((prevState) => ({
-          ...prevState,
-          phones: newPhones,
-          selectedPhone: null,
-        }));
-        navigate(ROUTES.HOME);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    handleCloseModal();
+
+    // PhoneService.deletePhone(selectedPhone.id)
+    //   .then(() => {
+    //     const newPhones = phones.filter((phone) => phone.id !== selectedPhone.id);
+    //     setPhonesState((prevState) => ({
+    //       ...prevState,
+    //       phones: newPhones,
+    //       selectedPhone: null,
+    //     }));
+    //     navigate(ROUTES.HOME);
+    //   })
+    //   .catch((error) => {
+    //     console.error(error);
+    //   });
+  };
+  const handleOpenModal = () => {
+    modalRef.current.showModal();
+  };
+
+  const handleCloseModal = () => {
+    modalRef.current.close();
   };
 
   return (
@@ -45,6 +55,9 @@ const PhonePage = () => {
       handleBackClick={handleBackClick}
       handleEditClick={handleEditClick}
       handleDeleteClick={handleDeleteClick}
+      handleOpenModal={handleOpenModal}
+      handleCloseModal={handleCloseModal}
+      ref={modalRef}
     />
   );
 };
