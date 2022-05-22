@@ -1,7 +1,8 @@
 import { bool, func, array } from 'prop-types';
 import { useEffect, useState } from 'react';
+import { InputVariant } from '../../../components/atoms/Input/Input.types';
 import { TextTypes } from '../../../components/atoms/Text';
-import { PhoneCard, InputSearch, Spinner } from './../../../components/atoms';
+import { PhoneCard, Input, Spinner } from './../../../components/atoms';
 import {
   HomeTitle,
   HomeWrapper,
@@ -39,7 +40,11 @@ function Home({ handleChange, handleClick, filteredPhones, isContentLoaded, ...o
       <HomeTitle as={TextTypes.H1}>The Phone Catalog</HomeTitle>
       {isContentLoaded ? (
         <>
-          <InputSearch placeholder="Search your phone..." onChange={handleChange} />
+          <Input
+            placeholder="Search your phone..."
+            onChange={handleChange}
+            variant={InputVariant.SEARCH}
+          />
           {phonesToShow.length ? (
             <PhonesWrapper
               dataLength={phonesToShow.length}

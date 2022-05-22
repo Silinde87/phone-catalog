@@ -1,16 +1,20 @@
 import { func, string } from 'prop-types';
 import { useState } from 'react';
-import { InputWrapper } from './InputSearch.styled';
+import { InputSearchWrapper, InputDefaultWrapper } from './Input.styled';
+import { InputVariant } from './Input.types';
 
-const InputSearch = ({
+const Input = ({
+  dataTestId = 'input-component',
   placeholder = '',
   value = '',
   id = '',
   name = '',
   onChange = () => {},
+  variant = InputVariant.DEFAULT,
   ...otherProps
 }) => {
   const [inputValue, setInputValue] = useState(value);
+  const InputWrapper = variant === InputVariant.DEFAULT ? InputDefaultWrapper : InputSearchWrapper;
 
   const handleChange = (event) => {
     setInputValue(event.target.value);
@@ -18,23 +22,27 @@ const InputSearch = ({
   };
   return (
     <InputWrapper
+      data-testid={dataTestId}
       placeholder={placeholder}
       value={inputValue}
       onChange={handleChange}
       type="text"
       id={id}
       name={name}
+      variant={variant}
       {...otherProps}
     />
   );
 };
 
-InputSearch.propTypes = {
+Input.propTypes = {
+  dataTestId: string,
   placeholder: string,
   value: string,
   id: string,
   name: string,
   onChange: func.isRequired,
+  variant: string,
 };
 
-export default InputSearch;
+export default Input;
