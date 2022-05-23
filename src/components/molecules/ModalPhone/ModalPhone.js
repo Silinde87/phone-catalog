@@ -1,8 +1,10 @@
-import { func } from 'prop-types';
+import { bool, func } from 'prop-types';
 import { forwardRef } from 'react';
 import { useReactContext } from '../../../context/Context';
-import { Button } from '../../atoms';
+import { Colors } from '../../../globals/colors';
+import { Button, Text } from '../../atoms';
 import { ButtonVariant } from '../../atoms/Button/Button.types';
+import { TextStyles } from '../../atoms/Text';
 import {
   ModalPhoneWrapper,
   PhoneForm,
@@ -20,10 +22,11 @@ import {
   InputStorage,
   InputDescription,
   InputsWrapper,
+  TextError,
 } from './ModalPhone.styled';
 
 const ModalPhone = forwardRef(
-  ({ handleCloseModal, handleSubmitModalPhone, ...otherProps }, ref) => {
+  ({ handleCloseModal, handleSubmitModalPhone, hasError, ...otherProps }, ref) => {
     const { phonesState } = useReactContext();
     const { selectedPhone } = phonesState;
 
@@ -73,11 +76,16 @@ const ModalPhone = forwardRef(
               value={selectedPhone?.description}
             />
           </InputsWrapper>
+          {hasError && (
+            <TextError color={Colors.brown600} fontStyle={TextStyles.OBLIQUE}>
+              You should fill all fields properly
+            </TextError>
+          )}
           <ModalPhoneButtonsWrapper>
             <Button variant={ButtonVariant.OUTLINE} dataTestId="save-btn">
               Confirm
             </Button>
-            <Button dataTestId="cancel-btn" onClick={handleCloseModal}>
+            <Button dataTestId="cancel-btn" type="button" onClick={handleCloseModal}>
               Cancel
             </Button>
           </ModalPhoneButtonsWrapper>
@@ -91,6 +99,7 @@ ModalPhone.propTypes = {
   handleConfirmClick: func,
   handleCloseModal: func,
   handleSubmitModalPhone: func,
+  hasError: bool,
 };
 
 export default ModalPhone;

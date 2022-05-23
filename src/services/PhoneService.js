@@ -14,7 +14,11 @@ const PhoneService = () => {
   const createPhone = (data) => {
     return http
       .POST({ path: API.PHONES, data })
-      .then((response) => response)
+      .then((response) => {
+        delete response.createdAt;
+        delete response.updatedAt;
+        return response;
+      })
       .catch((error) => {
         throw error;
       });

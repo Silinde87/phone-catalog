@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { createRef, useEffect, useRef } from 'react';
+import { createRef, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useReactContext } from '../../../context/Context';
 import { ROUTES } from '../../../globals/constants';
@@ -16,6 +16,8 @@ const PhonePage = () => {
   const modalDeleteRef = createRef();
   const modalPhoneRef = createRef();
   const refs = { modalDeleteRef, modalPhoneRef };
+
+  const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
     // Redirect to home if detail page is not accessed through home
@@ -64,12 +66,14 @@ const PhonePage = () => {
   };
 
   const handleCloseModalPhone = () => {
+    setHasError(false);
     modalPhoneRef.current.close();
     document.querySelector('[data-testid="edit-btn"]').blur();
   };
 
   const handleSubmitModalPhone = (event) => {
     event.preventDefault();
+    setHasError(false);
 
     const data = {
       manufacturer: event.target.manufacturer.value,
@@ -87,7 +91,7 @@ const PhonePage = () => {
     };
 
     if (!isPriceValid(data.price) || isAnyFieldEmpty(data)) {
-      // TODO: Implement message error validation
+      setHasError(true);
       return;
     }
 
@@ -123,6 +127,7 @@ const PhonePage = () => {
       handleOpenModalPhone={handleOpenModalPhone}
       handleCloseModalPhone={handleCloseModalPhone}
       handleSubmitModalPhone={handleSubmitModalPhone}
+      hasError={hasError}
       ref={refs}
     />
   );

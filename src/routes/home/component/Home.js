@@ -23,6 +23,7 @@ function Home({
   modalPhoneRef,
   handleCloseModalPhone,
   handleSubmitModalPhone,
+  hasError,
   ...otherProps
 }) {
   const maxPhonesToShow = 30;
@@ -93,6 +94,7 @@ function Home({
         ref={modalPhoneRef}
         handleCloseModal={handleCloseModalPhone}
         handleSubmitModalPhone={handleSubmitModalPhone}
+        hasError={hasError}
       />
     </HomeWrapper>
   );
@@ -107,6 +109,7 @@ Home.propTypes = {
   modalPhoneRef: any,
   handleCloseModalPhone: func,
   handleSubmitModalPhone: func,
+  hasError: bool,
 };
 
 export default Home;

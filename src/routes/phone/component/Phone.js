@@ -1,4 +1,4 @@
-import { func, node } from 'prop-types';
+import { bool, func, node } from 'prop-types';
 import { forwardRef } from 'react';
 import { IconButton } from '../../../components/atoms';
 import { TextTypes } from '../../../components/atoms/Text';
@@ -14,6 +14,7 @@ const Phone = forwardRef((props, refs) => {
     handleOpenModalPhone,
     handleCloseModalPhone,
     handleSubmitModalPhone,
+    hasError,
   } = props;
   const { modalDeleteRef, modalPhoneRef } = refs;
   return (
@@ -49,6 +50,7 @@ const Phone = forwardRef((props, refs) => {
         ref={modalPhoneRef}
         handleCloseModal={handleCloseModalPhone}
         handleSubmitModalPhone={handleSubmitModalPhone}
+        hasError={hasError}
       />
     </PhoneContainer>
   );
@@ -63,6 +65,7 @@ Phone.propTypes = {
   handleCloseModalPhone: func,
   handleSubmitModalPhone: func,
   modalRef: node,
+  hasError: bool,
 };
 
 export default Phone;

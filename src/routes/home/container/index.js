@@ -9,6 +9,7 @@ import PhoneService from '../../../services/PhoneService';
 function HomePage({ ...otherProps }) {
   const [filteredPhones, setFilteredPhones] = useState([]);
   const [isContentLoaded, setIsContentLoaded] = useState(false);
+  const [hasError, setHasError] = useState(false);
 
   const { phonesState, setPhonesState } = useReactContext();
   const navigate = useNavigate();
@@ -44,11 +45,13 @@ function HomePage({ ...otherProps }) {
   };
 
   const handleCloseModalPhone = () => {
+    setHasError(false);
     modalPhoneRef.current.close();
   };
 
   const handleSubmitModalPhone = (event) => {
     event.preventDefault();
+    setHasError(false);
 
     const data = {
       manufacturer: event.target.manufacturer.value,
@@ -67,23 +70,19 @@ function HomePage({ ...otherProps }) {
     };
 
     if (!isPriceValid(data.price) || isAnyFieldEmpty(data)) {
-      // TODO: Implement message error validation
+      setHasError(true);
       return;
     }
 
     PhoneService.createPhone(data)
       .then((res) => {
-        const newPhone = { ...res };
-        delete newPhone.createdAt;
-        delete newPhone.updatedAt;
         PhoneService.getAllPhones().then((phones) => {
           setPhonesState((prevState) => ({
             ...prevState,
             phones,
-            selectedPhone: newPhone,
+            selectedPhone: res,
           }));
-          handleCloseModalPhone();
-          navigate(ROUTES.PHONE_WITH_ID(newPhone.id));
+          navigate(ROUTES.PHONE_WITH_ID(res.id));
         });
       })
       .catch((error) => {
@@ -101,6 +100,7 @@ function HomePage({ ...otherProps }) {
       modalPhoneRef={modalPhoneRef}
       handleCloseModalPhone={handleCloseModalPhone}
       handleSubmitModalPhone={handleSubmitModalPhone}
+      hasError={hasError}
       {...otherProps}
     />
   );

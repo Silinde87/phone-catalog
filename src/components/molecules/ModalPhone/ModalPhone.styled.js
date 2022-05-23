@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { breakPoints } from '../../../globals/breakpoints';
-import { Input, Modal } from '../../atoms';
+import { Input, Modal, Text } from '../../atoms';
 
 const ModalPhoneWrapper = styled(Modal)`
   @media (min-width: ${breakPoints.xs}px) and (max-width: ${breakPoints.sm}px) {
@@ -98,6 +98,11 @@ const ModalPhoneButtonsWrapper = styled.div`
   justify-content: center;
 `;
 
+const TextError = styled(Text)`
+  font-size: 16px;
+  margin-top: 8px;
+`;
+
 export {
   ModalPhoneWrapper,
   PhoneForm,
@@ -115,4 +120,5 @@ export {
   InputBattery,
   InputStorage,
   InputDescription,
+  TextError,
 };
