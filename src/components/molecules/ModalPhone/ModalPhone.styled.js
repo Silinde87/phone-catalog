@@ -1,7 +1,12 @@
 import styled from 'styled-components';
+import { breakPoints } from '../../../globals/breakpoints';
 import { Input, Modal } from '../../atoms';
 
-const ModalPhoneWrapper = styled(Modal)``;
+const ModalPhoneWrapper = styled(Modal)`
+  @media (min-width: ${breakPoints.xs}px) and (max-width: ${breakPoints.sm}px) {
+    width: 100%;
+  }
+`;
 
 const InputManufacturer = styled(Input)`
   grid-area: manufacturer;
@@ -52,11 +57,16 @@ const InputDescription = styled(Input)`
 `;
 
 const PhoneForm = styled.form`
+  width: 460px;
+  @media (min-width: ${breakPoints.xs}px) and (max-width: ${breakPoints.sm}px) {
+    width: 100%;
+  }
+`;
+
+const InputsWrapper = styled.div`
   display: grid;
-  width: 400px;
   gap: 8px;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(7, 1fr);
   grid-template-areas:
     'manufacturer name'
     'color price'
@@ -65,6 +75,20 @@ const PhoneForm = styled.form`
     'camera battery'
     'storage storage'
     'description description';
+
+  @media (min-width: ${breakPoints.xs}px) and (max-width: ${breakPoints.sm}px) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+      'manufacturer manufacturer'
+      'name name'
+      'color price'
+      'screenSize screenResolution'
+      'processor processor'
+      'ram camera'
+      'battery battery'
+      'storage storage'
+      'description description';
+  }
 `;
 
 const ModalPhoneButtonsWrapper = styled.div`
@@ -77,6 +101,7 @@ const ModalPhoneButtonsWrapper = styled.div`
 export {
   ModalPhoneWrapper,
   PhoneForm,
+  InputsWrapper,
   ModalPhoneButtonsWrapper,
   InputManufacturer,
   InputName,

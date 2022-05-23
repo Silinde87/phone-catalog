@@ -19,6 +19,7 @@ import {
   InputBattery,
   InputStorage,
   InputDescription,
+  InputsWrapper,
 } from './ModalPhone.styled';
 
 const ModalPhone = forwardRef(
@@ -29,21 +30,23 @@ const ModalPhone = forwardRef(
     return (
       <ModalPhoneWrapper ref={ref} {...otherProps}>
         <PhoneForm onSubmit={handleSubmitModalPhone}>
-          <InputManufacturer placeholder="Manufacturer" value={selectedPhone?.manufacturer} />
-          <InputName placeholder="Phone name" value={selectedPhone?.name} />
-          <InputColor placeholder="Color" value={selectedPhone?.color} />
-          <InputPrice placeholder="Price" type="number" value={selectedPhone?.price} />
-          <InputScreenSize placeholder="Screen size" value={selectedPhone?.screen} />
-          <InputScreenResolution
-            placeholder="Screen resolution"
-            value={selectedPhone?.screenResolution}
-          />
-          <InputProcessor placeholder="Processor" value={selectedPhone?.processor} />
-          <InputRam placeholder="RAM Memory" value={selectedPhone?.ram} />
-          <InputCamera placeholder="Camera MP" value={selectedPhone?.camera} />
-          <InputBattery placeholder="Battery capacity" value={selectedPhone?.battery} />
-          <InputStorage placeholder="Storage" value={selectedPhone?.storage} />
-          <InputDescription placeholder="Description" value={selectedPhone?.description} />
+          <InputsWrapper>
+            <InputManufacturer placeholder="Manufacturer" value={selectedPhone?.manufacturer} />
+            <InputName placeholder="Phone name" value={selectedPhone?.name} />
+            <InputColor placeholder="Color" value={selectedPhone?.color} />
+            <InputPrice placeholder="Price" type="number" value={selectedPhone?.price} />
+            <InputScreenSize placeholder="Screen size" value={selectedPhone?.screen} />
+            <InputScreenResolution
+              placeholder="Screen resolution"
+              value={selectedPhone?.screenResolution}
+            />
+            <InputProcessor placeholder="Processor" value={selectedPhone?.processor} />
+            <InputRam placeholder="RAM Memory" value={selectedPhone?.ram} />
+            <InputCamera placeholder="Camera MP" value={selectedPhone?.camera} />
+            <InputBattery placeholder="Battery capacity" value={selectedPhone?.battery} />
+            <InputStorage placeholder="Storage" value={selectedPhone?.storage} />
+            <InputDescription placeholder="Description" value={selectedPhone?.description} />
+          </InputsWrapper>
           <ModalPhoneButtonsWrapper>
             <Button
               variant={ButtonVariant.OUTLINE}
