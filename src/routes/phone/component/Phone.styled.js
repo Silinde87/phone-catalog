@@ -32,21 +32,4 @@ const ButtonIconsWrapper = styled.div`
   }
 `;
 
-const PhoneConfirmModal = styled(Modal)`
-  max-width: 400px;
-`;
-
-const PhoneConfirmModalButtonsWrapper = styled.div`
-  display: flex;
-  gap: 16px;
-  margin-top: 24px;
-  justify-content: center;
-`;
-
-export {
-  PhoneContainer,
-  PhoneTitle,
-  ButtonIconsWrapper,
-  PhoneConfirmModal,
-  PhoneConfirmModalButtonsWrapper,
-};
+export { PhoneContainer, PhoneTitle, ButtonIconsWrapper };

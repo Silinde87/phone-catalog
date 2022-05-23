@@ -9,7 +9,9 @@ const PhonePage = () => {
   const { phonesState, setPhonesState } = useReactContext();
   const { selectedPhone, phones } = phonesState;
   const navigate = useNavigate();
-  const modalRef = createRef();
+  const modalDeleteRef = createRef();
+  const modalPhoneRef = createRef();
+  const refs = { modalDeleteRef, modalPhoneRef };
 
   useEffect(() => {
     // Redirect to home if detail page is not accessed through home
@@ -22,7 +24,7 @@ const PhonePage = () => {
     navigate(-1);
   };
   const handleEditClick = () => {
-    //console.log('edit');
+    // console.log('edit');
   };
   const handleDeleteClick = () => {
     PhoneService.deletePhone(selectedPhone.id)
@@ -33,22 +35,31 @@ const PhonePage = () => {
           phones: newPhones,
           selectedPhone: null,
         }));
-        handleCloseModal();
+        handleCloseModalDelete();
         navigate(ROUTES.HOME);
       })
       .catch((error) => {
         // eslint-disable-next-line no-console
         console.error(error);
-        handleCloseModal();
+        handleCloseModalDelete();
       });
   };
-  const handleOpenModal = () => {
-    modalRef.current.showModal();
+  const handleOpenModalDelete = () => {
+    modalDeleteRef.current.showModal();
     document.querySelector('[data-testid="yes-btn"]').blur();
   };
 
-  const handleCloseModal = () => {
-    modalRef.current.close();
+  const handleCloseModalDelete = () => {
+    modalDeleteRef.current.close();
+    document.querySelector('[data-testid="delete-btn"]').blur();
+  };
+
+  const handleOpenModalPhone = () => {
+    modalPhoneRef.current.showModal();
+  };
+
+  const handleCloseModalPhone = () => {
+    modalDeleteRef.current.close();
     document.querySelector('[data-testid="delete-btn"]').blur();
   };
 
@@ -58,9 +69,11 @@ const PhonePage = () => {
       handleBackClick={handleBackClick}
       handleEditClick={handleEditClick}
       handleDeleteClick={handleDeleteClick}
-      handleOpenModal={handleOpenModal}
-      handleCloseModal={handleCloseModal}
-      ref={modalRef}
+      handleOpenModalDelete={handleOpenModalDelete}
+      handleCloseModalDelete={handleCloseModalDelete}
+      handleOpenModalPhone={handleOpenModalPhone}
+      handleCloseModalPhone={handleCloseModalPhone}
+      ref={refs}
     />
   );
 };

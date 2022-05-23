@@ -1,26 +1,22 @@
 import { func, object, node } from 'prop-types';
 import { forwardRef } from 'react';
-import { Button, IconButton, Modal, Text } from '../../../components/atoms';
-import { ButtonVariant } from '../../../components/atoms/Button/Button.types';
+import { IconButton } from '../../../components/atoms';
 import { TextTypes } from '../../../components/atoms/Text';
-import { PhoneDetails } from '../../../components/molecules';
-import {
-  PhoneContainer,
-  PhoneTitle,
-  ButtonIconsWrapper,
-  PhoneConfirmModal,
-  PhoneConfirmModalButtonsWrapper,
-} from './Phone.styled';
+import { ModalDelete, ModalPhone, PhoneDetails } from '../../../components/molecules';
+import { PhoneContainer, PhoneTitle, ButtonIconsWrapper } from './Phone.styled';
 
-const Phone = forwardRef((props, ref) => {
+const Phone = forwardRef((props, refs) => {
   const {
     selectedPhone,
     handleBackClick,
     handleEditClick,
     handleDeleteClick,
-    handleOpenModal,
-    handleCloseModal,
+    handleOpenModalDelete,
+    handleCloseModalDelete,
+    handleOpenModalPhone,
+    handleCloseModalPhone,
   } = props;
+  const { modalDeleteRef, modalPhoneRef } = refs;
   return (
     <PhoneContainer>
       <PhoneTitle as={TextTypes.H1}>The Phone Catalog</PhoneTitle>
@@ -36,27 +32,25 @@ const Phone = forwardRef((props, ref) => {
           dataTestId="edit-btn"
           src="/images/edit.svg"
           text="Edit"
-          onClick={handleEditClick}
+          onClick={handleOpenModalPhone}
         />
         <IconButton
           dataTestId="delete-btn"
           src="/images/trash.svg"
           text="Delete"
-          onClick={handleOpenModal}
+          onClick={handleOpenModalDelete}
         />
       </ButtonIconsWrapper>
-      <PhoneConfirmModal ref={ref}>
-        <Text>{`You are deleting ${selectedPhone?.name}.`}</Text>
-        <Text>{`Are you sure?`}</Text>
-        <PhoneConfirmModalButtonsWrapper>
-          <Button variant={ButtonVariant.OUTLINE} dataTestId="yes-btn" onClick={handleDeleteClick}>
-            Yes
-          </Button>
-          <Button dataTestId="no-btn" onClick={handleCloseModal}>
-            No
-          </Button>
-        </PhoneConfirmModalButtonsWrapper>
-      </PhoneConfirmModal>
+      <ModalDelete
+        ref={modalDeleteRef}
+        handleConfirmClick={handleDeleteClick}
+        handleCloseModal={handleCloseModalDelete}
+      />
+      <ModalPhone
+        ref={modalPhoneRef}
+        handleConfirmClick={handleEditClick}
+        handleCloseModal={handleCloseModalPhone}
+      />
     </PhoneContainer>
   );
 });
@@ -66,8 +60,10 @@ Phone.propTypes = {
   handleBackClick: func,
   handleEditClick: func,
   handleDeleteClick: func,
-  handleOpenModal: func,
-  handleCloseModal: func,
+  handleOpenModalDelete: func,
+  handleCloseModalDelete: func,
+  handleOpenModalPhone: func,
+  handleCloseModalPhone: func,
   modalRef: node,
 };
 
