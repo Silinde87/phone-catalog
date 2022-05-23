@@ -1,10 +1,11 @@
+/* eslint-disable no-console */
 import { createRef, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useReactContext } from '../../../context/Context';
 import { ROUTES } from '../../../globals/constants';
 import Phone from '../component/Phone';
 import PhoneService from '../../../services/PhoneService';
-import { isAnyFieldEmpty, isPriceTypeNumber, isPriceValid } from '../aux/PhoneValidations';
+import { isAnyFieldEmpty, isPriceValid } from '../aux/PhoneValidations';
 
 const PhonePage = () => {
   const { phonesState, setPhonesState } = useReactContext();
@@ -26,9 +27,7 @@ const PhonePage = () => {
   const handleBackClick = () => {
     navigate(-1);
   };
-  const handleEditClick = () => {
-    // console.log('edit');
-  };
+
   const handleDeleteClick = () => {
     PhoneService.deletePhone(selectedPhone.id)
       .then(() => {
@@ -42,7 +41,6 @@ const PhonePage = () => {
         navigate(ROUTES.HOME);
       })
       .catch((error) => {
-        // eslint-disable-next-line no-console
         console.error(error);
         handleCloseModalDelete();
       });
@@ -68,6 +66,7 @@ const PhonePage = () => {
 
   const handleSubmitModalPhone = (event) => {
     event.preventDefault();
+
     const data = {
       manufacturer: event.target.manufacturer.value,
       name: event.target.name.value,
@@ -84,14 +83,36 @@ const PhonePage = () => {
     };
 
     if (!isPriceValid(data.price) || isAnyFieldEmpty(data)) {
+      // TODO: Implement message error validation
       return;
     }
+
+    PhoneService.updatePhone(selectedPhone.id, data)
+      .then(() => {
+        const updatedPhones = phones.map((phone) => {
+          if (phone.id === selectedPhone.id) {
+            const updatedPhone = { ...phone, ...data };
+            return updatedPhone;
+          }
+          return phone;
+        });
+        const updatedSelectedPhone = { ...selectedPhone, ...data };
+        setPhonesState((prevState) => ({
+          ...prevState,
+          selectedPhone: updatedSelectedPhone,
+          phones: updatedPhones,
+        }));
+        handleCloseModalPhone();
+      })
+      .catch((error) => {
+        handleCloseModalPhone();
+        console.error(error);
+      });
   };
 
   return (
     <Phone
       handleBackClick={handleBackClick}
-      handleEditClick={handleEditClick}
       handleDeleteClick={handleDeleteClick}
       handleOpenModalDelete={handleOpenModalDelete}
       handleCloseModalDelete={handleCloseModalDelete}

@@ -23,7 +23,7 @@ import {
 } from './ModalPhone.styled';
 
 const ModalPhone = forwardRef(
-  ({ handleConfirmClick, handleCloseModal, handleSubmitModalPhone, ...otherProps }, ref) => {
+  ({ handleCloseModal, handleSubmitModalPhone, ...otherProps }, ref) => {
     const { phonesState } = useReactContext();
     const { selectedPhone } = phonesState;
 
@@ -74,11 +74,7 @@ const ModalPhone = forwardRef(
             />
           </InputsWrapper>
           <ModalPhoneButtonsWrapper>
-            <Button
-              variant={ButtonVariant.OUTLINE}
-              dataTestId="save-btn"
-              onClick={handleConfirmClick}
-            >
+            <Button variant={ButtonVariant.OUTLINE} dataTestId="save-btn">
               Confirm
             </Button>
             <Button dataTestId="cancel-btn" onClick={handleCloseModal}>

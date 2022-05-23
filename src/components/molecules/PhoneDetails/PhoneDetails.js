@@ -1,4 +1,4 @@
-import { object } from 'prop-types';
+import { useReactContext } from '../../../context/Context';
 import { TextAlignements, TextTypes } from '../../atoms/Text';
 import { Text, PhoneSpec } from './../../atoms';
 import {
@@ -10,7 +10,10 @@ import {
   PhoneDetailsDescription,
 } from './PhoneDetails.styled';
 
-function PhoneDetails({ selectedPhone }) {
+function PhoneDetails() {
+  const { phonesState } = useReactContext();
+  const { selectedPhone } = phonesState;
+
   return (
     <PhoneDetailsCard>
       <PhoneDetailsTitleWrapper>
@@ -65,7 +68,4 @@ function PhoneDetails({ selectedPhone }) {
   );
 }
 
-PhoneDetails.propTypes = {
-  selectedPhone: object,
-};
 export default PhoneDetails;
