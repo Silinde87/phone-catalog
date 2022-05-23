@@ -24,6 +24,7 @@ const PhonesWrapper = styled(InfiniteScroll)`
   justify-content: center;
   gap: 32px;
   max-width: 1440px;
+  padding: 24px;
   @media (min-width: ${breakPoints.xs}px) and (max-width: ${breakPoints.sm}px) {
     gap: 24px;
   }
@@ -43,4 +44,23 @@ const NoMorePhonesText = styled(Text)`
   margin-top: 24px;
 `;
 
-export { HomeWrapper, PhonesWrapper, SpinnerWrapper, HomeTitle, NoMorePhonesText };
+const AddIcon = styled.img`
+  width: 50px;
+  margin-left: 8px;
+  cursor: pointer;
+`;
+const HomeInputSearchWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+`;
+
+export {
+  HomeWrapper,
+  PhonesWrapper,
+  SpinnerWrapper,
+  HomeTitle,
+  NoMorePhonesText,
+  HomeInputSearchWrapper,
+  AddIcon,
+};

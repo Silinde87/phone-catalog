@@ -25,6 +25,10 @@ const PhonePage = () => {
   }, [selectedPhone]);
 
   const handleBackClick = () => {
+    setPhonesState((prevState) => ({
+      ...prevState,
+      selectedPhone: null,
+    }));
     navigate(-1);
   };
 

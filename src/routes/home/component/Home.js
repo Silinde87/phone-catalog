@@ -1,9 +1,12 @@
-import { bool, func, array } from 'prop-types';
+import { bool, func, array, any } from 'prop-types';
 import { useEffect, useState } from 'react';
 import { InputVariant } from '../../../components/atoms/Input/Input.types';
 import { TextTypes } from '../../../components/atoms/Text';
+import { ModalPhone } from '../../../components/molecules';
 import { PhoneCard, Input, Spinner } from './../../../components/atoms';
 import {
+  AddIcon,
+  HomeInputSearchWrapper,
   HomeTitle,
   HomeWrapper,
   NoMorePhonesText,
@@ -11,7 +14,17 @@ import {
   SpinnerWrapper,
 } from './Home.styled';
 
-function Home({ handleChange, handleClick, filteredPhones, isContentLoaded, ...otherProps }) {
+function Home({
+  handleChange,
+  handlePhoneClick,
+  handleAddClick,
+  filteredPhones,
+  isContentLoaded,
+  modalPhoneRef,
+  handleCloseModalPhone,
+  handleSubmitModalPhone,
+  ...otherProps
+}) {
   const maxPhonesToShow = 30;
   const [phonesToShow, setPhonesToShow] = useState([]);
   const [hasMore, setHasMore] = useState(true);
@@ -40,11 +53,14 @@ function Home({ handleChange, handleClick, filteredPhones, isContentLoaded, ...o
       <HomeTitle as={TextTypes.H1}>The Phone Catalog</HomeTitle>
       {isContentLoaded ? (
         <>
-          <Input
-            placeholder="Search your phone..."
-            onChange={handleChange}
-            variant={InputVariant.SEARCH}
-          />
+          <HomeInputSearchWrapper>
+            <Input
+              placeholder="Search your phone..."
+              onChange={handleChange}
+              variant={InputVariant.SEARCH}
+            />
+            <AddIcon src="/images/add.svg" onClick={handleAddClick} />
+          </HomeInputSearchWrapper>
           {phonesToShow.length ? (
             <PhonesWrapper
               dataLength={phonesToShow.length}
@@ -59,7 +75,7 @@ function Home({ handleChange, handleClick, filteredPhones, isContentLoaded, ...o
                     src={phone.imageFileName}
                     name={phone.name}
                     id={phone.id}
-                    onClick={handleClick}
+                    onClick={handlePhoneClick}
                   />
                 );
               })}
@@ -73,15 +89,24 @@ function Home({ handleChange, handleClick, filteredPhones, isContentLoaded, ...o
           <Spinner />
         </SpinnerWrapper>
       )}
+      <ModalPhone
+        ref={modalPhoneRef}
+        handleCloseModal={handleCloseModalPhone}
+        handleSubmitModalPhone={handleSubmitModalPhone}
+      />
     </HomeWrapper>
   );
 }
 
 Home.propTypes = {
   handleChange: func,
-  handleClick: func,
+  handlePhoneClick: func,
+  handleAddClick: func,
   filteredPhones: array,
   isContentLoaded: bool,
+  modalPhoneRef: any,
+  handleCloseModalPhone: func,
+  handleSubmitModalPhone: func,
 };
 
 export default Home;

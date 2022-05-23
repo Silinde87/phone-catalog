@@ -22,7 +22,14 @@ function PhoneDetails() {
         </Text>
       </PhoneDetailsTitleWrapper>
       <PhoneDetailsWrapper>
-        <PhoneDetailsImage src={selectedPhone?.imageFileName}></PhoneDetailsImage>
+        <PhoneDetailsImage
+          src={
+            selectedPhone?.imageFileName === '/'
+              ? '/images/defaultPhone.svg'
+              : selectedPhone?.imageFileName
+          }
+          alt="Phone image"
+        />
         <div>
           <PhoneDetailsDescription textAlign={TextAlignements.LEFT}>
             {selectedPhone?.description}
