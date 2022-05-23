@@ -1,13 +1,13 @@
-import { func, object, node } from 'prop-types';
+import { func, node } from 'prop-types';
 import { forwardRef } from 'react';
 import { IconButton } from '../../../components/atoms';
 import { TextTypes } from '../../../components/atoms/Text';
 import { ModalDelete, ModalPhone, PhoneDetails } from '../../../components/molecules';
+import { useReactContext } from '../../../context/Context';
 import { PhoneContainer, PhoneTitle, ButtonIconsWrapper } from './Phone.styled';
 
 const Phone = forwardRef((props, refs) => {
   const {
-    selectedPhone,
     handleBackClick,
     handleEditClick,
     handleDeleteClick,
@@ -15,8 +15,11 @@ const Phone = forwardRef((props, refs) => {
     handleCloseModalDelete,
     handleOpenModalPhone,
     handleCloseModalPhone,
+    handleSubmitModalPhone,
   } = props;
   const { modalDeleteRef, modalPhoneRef } = refs;
+  const { phonesState } = useReactContext();
+  const { selectedPhone } = phonesState;
   return (
     <PhoneContainer>
       <PhoneTitle as={TextTypes.H1}>The Phone Catalog</PhoneTitle>
@@ -50,13 +53,13 @@ const Phone = forwardRef((props, refs) => {
         ref={modalPhoneRef}
         handleConfirmClick={handleEditClick}
         handleCloseModal={handleCloseModalPhone}
+        handleSubmitModalPhone={handleSubmitModalPhone}
       />
     </PhoneContainer>
   );
 });
 
 Phone.propTypes = {
-  selectedPhone: object,
   handleBackClick: func,
   handleEditClick: func,
   handleDeleteClick: func,
@@ -64,6 +67,7 @@ Phone.propTypes = {
   handleCloseModalDelete: func,
   handleOpenModalPhone: func,
   handleCloseModalPhone: func,
+  handleSubmitModalPhone: func,
   modalRef: node,
 };
 

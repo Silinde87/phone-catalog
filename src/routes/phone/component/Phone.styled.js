@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Modal, Text } from '../../../components/atoms';
+import { Text } from '../../../components/atoms';
 import { breakPoints } from '../../../globals/breakpoints';
 
 const PhoneContainer = styled.div`

@@ -29,7 +29,7 @@ const InputDefaultWrapper = styled.input`
   border: none;
   outline: 1px solid ${Colors.gray700};
   color: ${Colors.gray900};
-  width: 464px;
+  width: 100%;
   font-size: 16px;
   transition: outline 0.1s;
   &::placeholder {
@@ -37,9 +37,6 @@ const InputDefaultWrapper = styled.input`
   }
   &:focus {
     outline: 1px solid ${Colors.green600};
-  }
-  @media (min-width: ${breakPoints.xs}px) and (max-width: ${breakPoints.sm}px) {
-    width: 100%;
   }
 `;
 

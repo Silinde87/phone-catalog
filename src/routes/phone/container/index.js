@@ -59,13 +59,16 @@ const PhonePage = () => {
   };
 
   const handleCloseModalPhone = () => {
-    modalDeleteRef.current.close();
-    document.querySelector('[data-testid="delete-btn"]').blur();
+    modalPhoneRef.current.close();
+    document.querySelector('[data-testid="edit-btn"]').blur();
+  };
+
+  const handleSubmitModalPhone = (event) => {
+    event.preventDefault();
   };
 
   return (
     <Phone
-      selectedPhone={selectedPhone}
       handleBackClick={handleBackClick}
       handleEditClick={handleEditClick}
       handleDeleteClick={handleDeleteClick}
@@ -73,6 +76,7 @@ const PhonePage = () => {
       handleCloseModalDelete={handleCloseModalDelete}
       handleOpenModalPhone={handleOpenModalPhone}
       handleCloseModalPhone={handleCloseModalPhone}
+      handleSubmitModalPhone={handleSubmitModalPhone}
       ref={refs}
     />
   );

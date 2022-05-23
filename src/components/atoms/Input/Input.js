@@ -1,4 +1,4 @@
-import { func, string } from 'prop-types';
+import { func, string, number, oneOfType } from 'prop-types';
 import { useState } from 'react';
 import { InputSearchWrapper, InputDefaultWrapper } from './Input.styled';
 import { InputVariant } from './Input.types';
@@ -38,10 +38,10 @@ const Input = ({
 Input.propTypes = {
   dataTestId: string,
   placeholder: string,
-  value: string,
+  value: oneOfType([string, number]),
   id: string,
   name: string,
-  onChange: func.isRequired,
+  onChange: func,
   variant: string,
 };
 
