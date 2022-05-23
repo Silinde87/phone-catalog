@@ -26,7 +26,11 @@ const PhonesWrapper = styled(InfiniteScroll)`
   max-width: 1440px;
   padding: 24px;
   @media (min-width: ${breakPoints.xs}px) and (max-width: ${breakPoints.sm}px) {
-    gap: 24px;
+    justify-content: space-between;
+    column-gap: 8px;
+    row-gap: 24px;
+    padding-right: 0px;
+    padding-left: 0px;
   }
 `;
 

@@ -25,7 +25,7 @@ const PhoneCardWrapper = styled.button`
   }
 
   @media (min-width: ${breakPoints.xs}px) and (max-width: ${breakPoints.sm}px) {
-    width: 175px;
+    width: 165px;
     &:hover,
     &:focus-visible {
       transform: none;
