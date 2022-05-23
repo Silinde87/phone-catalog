@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { createRef, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useReactContext } from '../../../context/Context';
