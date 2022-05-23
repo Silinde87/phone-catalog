@@ -4,11 +4,14 @@ import { useReactContext } from '../../../context/Context';
 import { ROUTES } from '../../../globals/constants';
 import Phone from '../component/Phone';
 import PhoneService from '../../../services/PhoneService';
+import { isAnyFieldEmpty, isPriceTypeNumber, isPriceValid } from '../aux/PhoneValidations';
 
 const PhonePage = () => {
   const { phonesState, setPhonesState } = useReactContext();
   const { selectedPhone, phones } = phonesState;
+
   const navigate = useNavigate();
+
   const modalDeleteRef = createRef();
   const modalPhoneRef = createRef();
   const refs = { modalDeleteRef, modalPhoneRef };
@@ -65,6 +68,24 @@ const PhonePage = () => {
 
   const handleSubmitModalPhone = (event) => {
     event.preventDefault();
+    const data = {
+      manufacturer: event.target.manufacturer.value,
+      name: event.target.name.value,
+      color: event.target.color.value,
+      price: Number(event.target.price.value),
+      screen: event.target.screen.value,
+      screenResolution: event.target.screenResolution.value,
+      processor: event.target.processor.value,
+      ram: event.target.ram.value,
+      camera: event.target.camera.value,
+      battery: event.target.battery.value,
+      storage: event.target.storage.value,
+      description: event.target.description.value,
+    };
+
+    if (!isPriceValid(data.price) || isAnyFieldEmpty(data)) {
+      return;
+    }
   };
 
   return (
