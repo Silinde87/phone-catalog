@@ -8,16 +8,15 @@ import PhoneService from '../../../services/PhoneService';
 import { isAnyFieldEmpty, isPriceValid } from '../aux/PhoneValidations';
 
 const PhonePage = () => {
+  const [hasError, setHasError] = useState(false);
+
   const { phonesState, setPhonesState } = useReactContext();
   const { selectedPhone, phones } = phonesState;
-
   const navigate = useNavigate();
 
   const modalDeleteRef = createRef();
   const modalPhoneRef = createRef();
   const refs = { modalDeleteRef, modalPhoneRef };
-
-  const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
     // Redirect to home if detail page is not accessed through home
@@ -67,9 +66,11 @@ const PhonePage = () => {
   };
 
   const handleCloseModalPhone = () => {
-    setHasError(false);
-    modalPhoneRef.current.close();
-    document.querySelector('[data-testid="edit-btn"]').blur();
+    if (modalPhoneRef.current) {
+      setHasError(false);
+      modalPhoneRef.current.close();
+      document.querySelector('[data-testid="edit-btn"]').blur();
+    }
   };
 
   const handleSubmitModalPhone = (event) => {
@@ -114,7 +115,6 @@ const PhonePage = () => {
         handleCloseModalPhone();
       })
       .catch((error) => {
-        handleCloseModalPhone();
         console.error(error);
       });
   };

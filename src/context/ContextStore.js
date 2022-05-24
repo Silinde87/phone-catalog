@@ -5,7 +5,7 @@ import { ContextProvider } from './Context';
 
 export const initPhonesState = {
   phones: [],
-  selectedPhone: {},
+  selectedPhone: null,
 };
 
 // eslint-disable-next-line react/prop-types

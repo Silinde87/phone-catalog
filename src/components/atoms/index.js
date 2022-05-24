@@ -6,5 +6,6 @@ import PhoneSpec from './PhoneSpec';
 import IconButton from './IconButton';
 import Modal from './Modal';
 import Button from './Button';
+import LoadingButton from './LoadingButton';
 
-export { PhoneCard, Text, Input, Spinner, PhoneSpec, IconButton, Modal, Button };
+export { PhoneCard, Text, Input, Spinner, PhoneSpec, IconButton, Modal, Button, LoadingButton };

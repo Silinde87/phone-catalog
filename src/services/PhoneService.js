@@ -12,6 +12,7 @@ const PhoneService = () => {
   };
 
   const createPhone = (data) => {
+    data.imageFileName = '/images/defaultPhone.svg';
     return http
       .POST({ path: API.PHONES, data })
       .then((response) => {

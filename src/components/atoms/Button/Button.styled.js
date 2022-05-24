@@ -3,7 +3,7 @@ import { Colors } from '../../../globals/colors';
 import Text from '../Text';
 import { ButtonVariant } from './Button.types';
 
-const handleBackgroundColor = (variant, status) => {
+export const handleBackgroundColor = (variant, status) => {
   const variants = {
     [ButtonVariant.FILLED]: { normal: Colors.green500, hover: Colors.green600 },
     [ButtonVariant.OUTLINE]: { normal: Colors.gray200, hover: Colors.gray200 },
@@ -11,7 +11,7 @@ const handleBackgroundColor = (variant, status) => {
   return variants[variant][status];
 };
 
-const handleBorderColor = (variant, status) => {
+export const handleBorderColor = (variant, status) => {
   const variants = {
     [ButtonVariant.FILLED]: { normal: Colors.green500, hover: Colors.green600 },
     [ButtonVariant.OUTLINE]: { normal: Colors.green500, hover: Colors.green600 },

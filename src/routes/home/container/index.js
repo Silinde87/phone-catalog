@@ -11,6 +11,7 @@ function HomePage({ ...otherProps }) {
   const [filteredPhones, setFilteredPhones] = useState([]);
   const [isContentLoaded, setIsContentLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const { phonesState, setPhonesState } = useReactContext();
   const navigate = useNavigate();
@@ -52,7 +53,12 @@ function HomePage({ ...otherProps }) {
 
   const handleSubmitModalPhone = (event) => {
     event.preventDefault();
+    if (isLoading) {
+      return;
+    }
+
     setHasError(false);
+    setIsLoading(true);
 
     const data = {
       manufacturer: event.target.manufacturer.value,
@@ -67,7 +73,6 @@ function HomePage({ ...otherProps }) {
       battery: event.target.battery.value,
       storage: event.target.storage.value,
       description: event.target.description.value,
-      imageFileName: '/',
     };
 
     if (!isPriceValid(data.price) || isAnyFieldEmpty(data)) {
@@ -83,6 +88,7 @@ function HomePage({ ...otherProps }) {
             phones,
             selectedPhone: res,
           }));
+          setIsLoading(false);
           navigate(ROUTES.PHONE_WITH_ID(res.id));
         });
       })
@@ -102,6 +108,7 @@ function HomePage({ ...otherProps }) {
       handleCloseModalPhone={handleCloseModalPhone}
       handleSubmitModalPhone={handleSubmitModalPhone}
       hasError={hasError}
+      isLoading={isLoading}
       {...otherProps}
     />
   );

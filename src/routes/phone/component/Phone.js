@@ -15,6 +15,7 @@ const Phone = forwardRef((props, refs) => {
     handleCloseModalPhone,
     handleSubmitModalPhone,
     hasError,
+    isLoading,
   } = props;
   const { modalDeleteRef, modalPhoneRef } = refs;
   return (
@@ -51,6 +52,7 @@ const Phone = forwardRef((props, refs) => {
         handleCloseModal={handleCloseModalPhone}
         handleSubmitModalPhone={handleSubmitModalPhone}
         hasError={hasError}
+        isLoading={isLoading}
       />
     </PhoneContainer>
   );
@@ -66,6 +68,7 @@ Phone.propTypes = {
   handleSubmitModalPhone: func,
   modalRef: node,
   hasError: bool,
+  isLoading: bool,
 };
 
 export default Phone;
