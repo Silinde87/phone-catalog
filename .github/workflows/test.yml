@@ -33,4 +33,4 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
-          env: host=phone-catalog-sandy.vercel.app
+          config: pageLoadTimeout=10000,baseUrl=https://phone-catalog-sandy.vercel.app/
