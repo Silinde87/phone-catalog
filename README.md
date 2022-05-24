@@ -3,6 +3,10 @@
 ![](https://img.shields.io/github/deployments/Silinde87/phone-catalog/production?label=Vercel&logo=Vercel&logoColor=white)
 ![](https://img.shields.io/w3c-validation/html?targetUrl=https://phone-catalog-sandy.vercel.app/)
 
+## How it looks
+
+🔗 [Live Demo](https://phone-catalog-sandy.vercel.app/)
+
 This React application is a catalog where you can find a collection of more than 1000 phone.
 These phones can be visualized thanks to an [API developed for this application](https://github.com/Silinde87/phone-catalog-API).
 
@@ -14,9 +18,8 @@ I also make use of **github actions to run a pipeline** that automates the check
 
 The template [create-boilerplate-react](https://www.npmjs.com/package/create-boilerplate-react), also developed by me, was used to start this project.
 
-## How it looks
+To organise the workflow and the different user stories I have used the [kanban board](https://github.com/Silinde87/phone-catalog/projects/1) available on github.
 
-🔗 [Live Demo](https://phone-catalog-sandy.vercel.app/)
 
 ## Quick Start
 
