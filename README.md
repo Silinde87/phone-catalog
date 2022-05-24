@@ -12,6 +12,8 @@ I have developed this application using atomic design and test driven developmen
 
 I also make use of **github actions to run a pipeline** that automates the checking of the tests, and the different rules applied during the build.
 
+The template [create-boilerplate-react](https://www.npmjs.com/package/create-boilerplate-react), also developed by me, was used to start this project.
+
 ## How it looks
 
 🔗 [Live Demo](https://phone-catalog-sandy.vercel.app/)

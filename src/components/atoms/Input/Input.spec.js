@@ -2,11 +2,12 @@ import Input from './Input';
 import { Colors } from '../../../globals/colors';
 import { renderComponent } from '../../../utils/testUtils';
 import { fireEvent } from '@testing-library/react';
+import { InputVariant } from './Input.types';
 
 describe('Input Component', () => {
   test('should be rendered with right style', () => {
     const { queryByTestId } = renderComponent(
-      <Input data-testid="input-component" onChange={() => {}} />
+      <Input data-testid="input-component" variant={InputVariant.SEARCH} />
     );
     const inputComponent = queryByTestId('input-component');
 
