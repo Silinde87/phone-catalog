@@ -16,4 +16,23 @@ const interceptCreatePhone = () => {
   }).as('createPhone');
 };
 
-export default { interceptPhonesList, interceptCreatePhone };
+const interceptEditPhone = () => {
+  cy.intercept({
+    method: 'PUT',
+    hostname: 'phone-catalog-dcsl.herokuapp.com',
+  }).as('editPhone');
+};
+
+const interceptDeletePhone = () => {
+  cy.intercept({
+    method: 'DELETE',
+    hostname: 'phone-catalog-dcsl.herokuapp.com',
+  }).as('deletePhone');
+};
+
+export default {
+  interceptPhonesList,
+  interceptCreatePhone,
+  interceptEditPhone,
+  interceptDeletePhone,
+};
