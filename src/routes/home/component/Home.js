@@ -56,11 +56,12 @@ function Home({
         <>
           <HomeInputSearchWrapper>
             <Input
+              dataTestId="search-input"
               placeholder="Search your phone..."
               onChange={handleChange}
               variant={InputVariant.SEARCH}
             />
-            <AddIcon src="/images/add.svg" onClick={handleAddClick} />
+            <AddIcon src="/images/add.svg" data-testid="add-icon" onClick={handleAddClick} />
           </HomeInputSearchWrapper>
           {phonesToShow.length ? (
             <PhonesWrapper
@@ -82,7 +83,9 @@ function Home({
               })}
             </PhonesWrapper>
           ) : (
-            <NoMorePhonesText>I could not find any phone with that name 🥲</NoMorePhonesText>
+            <NoMorePhonesText data-testid="empty-phones-text">
+              I could not find any phone with that name 🥲
+            </NoMorePhonesText>
           )}
         </>
       ) : (

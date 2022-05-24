@@ -37,42 +37,59 @@ const ModalPhone = forwardRef(
             <InputManufacturer
               placeholder="Manufacturer"
               name="manufacturer"
+              id="manufacturer"
               value={selectedPhone?.manufacturer}
             />
-            <InputName placeholder="Phone name" name="name" value={selectedPhone?.name} />
-            <InputColor placeholder="Color" name="color" value={selectedPhone?.color} />
+            <InputName placeholder="Phone name" name="name" id="name" value={selectedPhone?.name} />
+            <InputColor placeholder="Color" name="color" id="color" value={selectedPhone?.color} />
             <InputPrice
               placeholder="Price"
               name="price"
+              id="price"
               type="number"
               value={selectedPhone?.price}
             />
             <InputScreenSize
               placeholder="Screen size"
               name="screen"
+              id="screen"
               value={selectedPhone?.screen}
             />
             <InputScreenResolution
               placeholder="Screen resolution"
               name="screenResolution"
+              id="screenResolution"
               value={selectedPhone?.screenResolution}
             />
             <InputProcessor
               placeholder="Processor"
               name="processor"
+              id="processor"
               value={selectedPhone?.processor}
             />
-            <InputRam placeholder="RAM Memory" name="ram" value={selectedPhone?.ram} />
-            <InputCamera placeholder="Camera MP" name="camera" value={selectedPhone?.camera} />
+            <InputRam placeholder="RAM Memory" name="ram" id="ram" value={selectedPhone?.ram} />
+            <InputCamera
+              placeholder="Camera MP"
+              name="camera"
+              id="camera"
+              value={selectedPhone?.camera}
+            />
             <InputBattery
               placeholder="Battery capacity"
               name="battery"
+              id="battery"
               value={selectedPhone?.battery}
             />
-            <InputStorage placeholder="Storage" name="storage" value={selectedPhone?.storage} />
+            <InputStorage
+              placeholder="Storage"
+              name="storage"
+              id="storage"
+              value={selectedPhone?.storage}
+            />
             <InputDescription
               placeholder="Description"
               name="description"
+              id="description"
               value={selectedPhone?.description}
             />
           </InputsWrapper>

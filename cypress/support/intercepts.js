@@ -8,4 +8,12 @@ const interceptPhonesList = () => {
   }).as('phonesList');
 };
 
-export default { interceptPhonesList };
+const interceptCreatePhone = () => {
+  cy.intercept({
+    method: 'POST',
+    url: `/api${API.PHONES}`,
+    hostname: 'phone-catalog-dcsl.herokuapp.com',
+  }).as('createPhone');
+};
+
+export default { interceptPhonesList, interceptCreatePhone };

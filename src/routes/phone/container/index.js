@@ -31,7 +31,8 @@ const PhonePage = () => {
       ...prevState,
       selectedPhone: null,
     }));
-    navigate(-1);
+    // This should be navigate(-1) but it's currently not working on Safari
+    navigate(ROUTES.HOME);
   };
 
   const handleDeleteClick = () => {
