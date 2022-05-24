@@ -62,7 +62,12 @@ function Home({
               onChange={handleChange}
               variant={InputVariant.SEARCH}
             />
-            <AddIcon src="/images/add.svg" data-testid="add-icon" onClick={handleAddClick} />
+            <AddIcon
+              src="/images/add.svg"
+              data-testid="add-icon"
+              alt="add-icon"
+              onClick={handleAddClick}
+            />
           </HomeInputSearchWrapper>
           {phonesToShow.length ? (
             <PhonesWrapper
