@@ -2,7 +2,7 @@ import { bool, func } from 'prop-types';
 import { forwardRef } from 'react';
 import { useReactContext } from '../../../context/Context';
 import { Colors } from '../../../globals/colors';
-import { Button, Text } from '../../atoms';
+import { Button, LoadingButton } from '../../atoms';
 import { ButtonVariant } from '../../atoms/Button/Button.types';
 import { TextStyles } from '../../atoms/Text';
 import {
@@ -26,7 +26,7 @@ import {
 } from './ModalPhone.styled';
 
 const ModalPhone = forwardRef(
-  ({ handleCloseModal, handleSubmitModalPhone, hasError, ...otherProps }, ref) => {
+  ({ handleCloseModal, handleSubmitModalPhone, hasError, isLoading, ...otherProps }, ref) => {
     const { phonesState } = useReactContext();
     const { selectedPhone } = phonesState;
 
@@ -99,9 +99,13 @@ const ModalPhone = forwardRef(
             </TextError>
           )}
           <ModalPhoneButtonsWrapper>
-            <Button variant={ButtonVariant.OUTLINE} dataTestId="save-btn">
-              Confirm
-            </Button>
+            {isLoading ? (
+              <LoadingButton variant={ButtonVariant.OUTLINE} />
+            ) : (
+              <Button variant={ButtonVariant.OUTLINE} dataTestId="save-btn">
+                Confirm
+              </Button>
+            )}
             <Button dataTestId="cancel-btn" type="button" onClick={handleCloseModal}>
               Cancel
             </Button>
@@ -117,6 +121,7 @@ ModalPhone.propTypes = {
   handleCloseModal: func,
   handleSubmitModalPhone: func,
   hasError: bool,
+  isLoading: bool,
 };
 
 export default ModalPhone;

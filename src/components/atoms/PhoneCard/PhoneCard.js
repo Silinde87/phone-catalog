@@ -42,12 +42,7 @@ const PhoneCard = ({
   return (
     <PhoneCardWrapper onClick={handleClick} value={name} data-testid={dataTestId} {...otherProps}>
       <PhoneCardSpinner isImageLoaded={isImageLoaded} size={'10'} />
-      <PhoneCardImage
-        src={src === '/' ? '/images/defaultPhone.svg' : src}
-        alt={name}
-        ref={imageRef}
-        isImageLoaded={isImageLoaded}
-      />
+      <PhoneCardImage src={src} alt={name} ref={imageRef} isImageLoaded={isImageLoaded} />
       <PhoneCardText isImageLoaded={isImageLoaded}>{name}</PhoneCardText>
     </PhoneCardWrapper>
   );
