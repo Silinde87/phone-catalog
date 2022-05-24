@@ -33,6 +33,4 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
-          browser: chrome
-          build: yarn build
-          start: yarn ci:open
+          env: host=phone-catalog-sandy.vercel.app
