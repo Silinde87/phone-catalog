@@ -49,6 +49,7 @@ const NoMorePhonesText = styled(Text)`
 `;
 
 const AddIcon = styled.img`
+  height: 56px;
   width: 50px;
   margin-left: 8px;
   cursor: pointer;
