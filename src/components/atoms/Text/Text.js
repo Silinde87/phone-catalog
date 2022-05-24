@@ -9,6 +9,7 @@ const Text = ({
   textAlign = TextAlignements.CENTER,
   uppercase = false,
   fontStyle = TextStyles.NORMAL,
+  dataTestId = 'text-component',
   children,
   ...otherProps
 }) => {
@@ -19,6 +20,7 @@ const Text = ({
       textAlign={textAlign}
       uppercase={uppercase}
       fontStyle={fontStyle}
+      data-testid={dataTestId}
       {...otherProps}
     >
       {children}
@@ -33,6 +35,7 @@ Text.propTypes = {
   uppercase: bool,
   fontStyle: string,
   children: node,
+  dataTestId: string,
 };
 
 export default Text;

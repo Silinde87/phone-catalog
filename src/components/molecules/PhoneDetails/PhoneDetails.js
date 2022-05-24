@@ -17,7 +17,7 @@ function PhoneDetails() {
   return (
     <PhoneDetailsCard>
       <PhoneDetailsTitleWrapper>
-        <Text textAlign={TextAlignements.LEFT} as={TextTypes.H3}>
+        <Text textAlign={TextAlignements.LEFT} as={TextTypes.H3} dataTestId="phone-name-title">
           {selectedPhone?.name || ''}
         </Text>
       </PhoneDetailsTitleWrapper>

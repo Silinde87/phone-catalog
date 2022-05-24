@@ -7,7 +7,14 @@ import {
   PhoneCardWrapper,
 } from './PhoneCard.styled';
 
-const PhoneCard = ({ src = '', name = '', id = '', onClick = () => {}, ...otherProps }) => {
+const PhoneCard = ({
+  dataTestId = 'phone-card',
+  src = '',
+  name = '',
+  id = '',
+  onClick = () => {},
+  ...otherProps
+}) => {
   const [isImageLoaded, setIsImageLoaded] = useState(false);
   const imageRef = useRef(null);
 
@@ -33,7 +40,7 @@ const PhoneCard = ({ src = '', name = '', id = '', onClick = () => {}, ...otherP
   };
 
   return (
-    <PhoneCardWrapper onClick={handleClick} value={name} {...otherProps}>
+    <PhoneCardWrapper onClick={handleClick} value={name} data-testid={dataTestId} {...otherProps}>
       <PhoneCardSpinner isImageLoaded={isImageLoaded} size={'10'} />
       <PhoneCardImage
         src={src === '/' ? '/images/defaultPhone.svg' : src}
@@ -47,6 +54,7 @@ const PhoneCard = ({ src = '', name = '', id = '', onClick = () => {}, ...otherP
 };
 
 PhoneCard.propTypes = {
+  dataTestId: string,
   src: string.isRequired,
   name: string.isRequired,
   id: string.isRequired,
