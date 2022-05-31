@@ -31,7 +31,7 @@ const ModalPhone = forwardRef(
     const { selectedPhone } = phonesState;
 
     return (
-      <ModalPhoneWrapper ref={ref} {...otherProps}>
+      <ModalPhoneWrapper ref={ref} id="modal-phone" {...otherProps}>
         <PhoneForm onSubmit={handleSubmitModalPhone}>
           <InputsWrapper>
             <InputManufacturer

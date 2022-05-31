@@ -9,6 +9,7 @@ import { isAnyFieldEmpty, isPriceValid } from '../aux/PhoneValidations';
 
 const PhonePage = () => {
   const [hasError, setHasError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const { phonesState, setPhonesState } = useReactContext();
   const { selectedPhone, phones } = phonesState;
@@ -66,16 +67,16 @@ const PhonePage = () => {
   };
 
   const handleCloseModalPhone = () => {
-    if (modalPhoneRef.current) {
-      setHasError(false);
-      modalPhoneRef.current.close();
-      document.querySelector('[data-testid="edit-btn"]').blur();
-    }
+    setHasError(false);
+    setIsLoading(false);
+    document.querySelector('#modal-phone').close();
+    document.querySelector('[data-testid="edit-btn"]').blur();
   };
 
   const handleSubmitModalPhone = (event) => {
     event.preventDefault();
     setHasError(false);
+    setIsLoading(true);
 
     const data = {
       manufacturer: event.target.manufacturer.value,
@@ -94,6 +95,7 @@ const PhonePage = () => {
 
     if (!isPriceValid(data.price) || isAnyFieldEmpty(data)) {
       setHasError(true);
+      setIsLoading(false);
       return;
     }
 
@@ -129,6 +131,7 @@ const PhonePage = () => {
       handleCloseModalPhone={handleCloseModalPhone}
       handleSubmitModalPhone={handleSubmitModalPhone}
       hasError={hasError}
+      isLoading={isLoading}
       ref={refs}
     />
   );
