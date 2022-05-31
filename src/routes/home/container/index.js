@@ -48,6 +48,7 @@ function HomePage({ ...otherProps }) {
 
   const handleCloseModalPhone = () => {
     setHasError(false);
+    setIsLoading(false);
     modalPhoneRef.current.close();
   };
 
@@ -77,6 +78,7 @@ function HomePage({ ...otherProps }) {
 
     if (!isPriceValid(data.price) || isAnyFieldEmpty(data)) {
       setHasError(true);
+      setIsLoading(false);
       return;
     }
 
